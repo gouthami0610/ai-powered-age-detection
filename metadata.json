@@ -1,0 +1,5 @@
+{
+  "name": "AI Age Verification Social Media",
+  "description": "A secure social media platform with AI-based facial age verification to ensure users are 18+ before registration.",
+  "requestFramePermissions": ["camera"]
+}

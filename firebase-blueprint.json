@@ -1,0 +1,48 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Represents a user in the social media application.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "The unique user ID from Firebase Auth." },
+        "email": { "type": "string", "format": "email", "description": "The user's email address." },
+        "displayName": { "type": "string", "description": "The user's full name." },
+        "username": { "type": "string", "description": "The user's unique username." },
+        "age": { "type": "number", "description": "The user's estimated age from AI verification." },
+        "isVerified": { "type": "boolean", "description": "Whether the user has been age-verified." },
+        "createdAt": { "type": "number", "description": "The timestamp when the user joined." },
+        "bio": { "type": "string", "description": "A short bio about the user." },
+        "photoURL": { "type": "string", "format": "uri", "description": "The user's profile picture URL." }
+      },
+      "required": ["uid", "email", "displayName", "username", "age", "isVerified", "createdAt"]
+    },
+    "Post": {
+      "title": "Post",
+      "description": "Represents a post shared by a user.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "The unique post ID." },
+        "authorId": { "type": "string", "description": "The user ID of the post author." },
+        "authorName": { "type": "string", "description": "The name of the post author." },
+        "authorPhoto": { "type": "string", "format": "uri", "description": "The profile picture URL of the post author." },
+        "content": { "type": "string", "description": "The text content of the post." },
+        "imageURL": { "type": "string", "format": "uri", "description": "An optional image URL for the post." },
+        "likes": { "type": "array", "items": { "type": "string" }, "description": "An array of user IDs who liked the post." },
+        "commentsCount": { "type": "number", "description": "The number of comments on the post." },
+        "createdAt": { "type": "number", "description": "The timestamp when the post was created." }
+      },
+      "required": ["authorId", "authorName", "content", "likes", "commentsCount", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Stores user profile information."
+    },
+    "/posts/{postId}": {
+      "schema": "Post",
+      "description": "Stores user posts."
+    }
+  }
+}
